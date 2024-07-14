@@ -1,0 +1,15 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow read and write access to authenticated users in posts collection
+    match /posts/{document=**} {
+       allow read: if true;
+       allow write: if true;
+    }
+    // Allow read and write access to authenticated users in users collection
+    match /users/{document=**} {
+       allow read: if true;
+       allow write: if true;
+    }
+  }
+}
